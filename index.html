@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="سوريا الآن — منصة مجتمعية لمعرفة ما يحدث حولك في سوريا والإبلاغ عن المشكلات المحلية.">
-
+  <meta name="theme-color" content="#1f8f5f">
+  <meta name="description" content="سوريا الآن — ما يحدث حولك في الوقت الحقيقي">
   <title>سوريا الآن | ما يحدث حولك</title>
 
   <style>
@@ -19,29 +18,19 @@
       --primary: #1f8f5f;
       --primary-dark: #167249;
       --primary-light: #e9f7f0;
-
       --danger: #d64545;
       --warning: #d99418;
-      --info: #3478db;
-
       --text: #18231f;
       --text-light: #6b7772;
-
       --background: #f5f7f6;
       --surface: #ffffff;
       --border: #e4e9e6;
-
       --radius: 18px;
-      --shadow: 0 8px 30px rgba(25, 45, 35, 0.07);
+      --shadow: 0 8px 30px rgba(25,45,35,.07);
     }
 
     body {
-      font-family:
-        "Segoe UI",
-        Tahoma,
-        Arial,
-        sans-serif;
-
+      font-family: "Segoe UI", Tahoma, Arial, sans-serif;
       background: var(--background);
       color: var(--text);
       line-height: 1.6;
@@ -58,31 +47,24 @@
       cursor: pointer;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
+    /* ================= HEADER ================= */
 
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255,255,255,.96);
       backdrop-filter: blur(12px);
-
       border-bottom: 1px solid var(--border);
     }
 
     .header-inner {
       max-width: 1180px;
       margin: auto;
-
       min-height: 72px;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       padding: 0 20px;
     }
 
@@ -90,25 +72,39 @@
       display: flex;
       align-items: center;
       gap: 12px;
-
       text-decoration: none;
       color: var(--text);
     }
 
-    .brand-icon {
-      width: 43px;
-      height: 43px;
+    /*
+      شعار سوريا الآن
+      خريطة سوريا مبسطة + نقطة "الآن"
+    */
 
-      border-radius: 13px;
-
-      background: var(--primary);
-
+    .logo {
+      width: 48px;
+      height: 48px;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
 
-      color: white;
-      font-size: 22px;
+    .logo svg {
+      width: 48px;
+      height: 48px;
+      display: block;
+    }
+
+    .logo-pulse {
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      background: white;
+      border-radius: 50%;
+      left: 21px;
+      top: 20px;
+      box-shadow: 0 0 0 4px rgba(255,255,255,.18);
     }
 
     .brand-text {
@@ -137,15 +133,11 @@
     .location-button {
       border: 1px solid var(--border);
       background: white;
-
       padding: 9px 14px;
-
       border-radius: 12px;
-
       display: flex;
       align-items: center;
       gap: 7px;
-
       color: var(--text);
       font-size: 13px;
       font-weight: 600;
@@ -155,9 +147,7 @@
       border-color: var(--primary);
     }
 
-    /* =========================
-       HERO
-    ========================= */
+    /* ================= HERO ================= */
 
     .hero {
       background: white;
@@ -167,22 +157,17 @@
     .hero-inner {
       max-width: 1180px;
       margin: auto;
-
       padding: 48px 20px 42px;
-
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-
+      grid-template-columns: 1.15fr .85fr;
       gap: 40px;
       align-items: center;
     }
 
     .hero-content h1 {
-      font-size: clamp(32px, 5vw, 54px);
+      font-size: clamp(32px,5vw,54px);
       line-height: 1.15;
-
       margin-bottom: 16px;
-
       letter-spacing: -1px;
     }
 
@@ -192,11 +177,8 @@
 
     .hero-description {
       max-width: 620px;
-
       color: var(--text-light);
-
       font-size: 17px;
-
       margin-bottom: 26px;
     }
 
@@ -208,18 +190,13 @@
 
     .primary-button {
       border: none;
-
       background: var(--primary);
       color: white;
-
       padding: 13px 20px;
-
       border-radius: 13px;
-
       font-size: 15px;
       font-weight: 700;
-
-      transition: 0.2s;
+      transition: .2s;
     }
 
     .primary-button:hover {
@@ -229,14 +206,10 @@
 
     .secondary-button {
       border: 1px solid var(--border);
-
       background: white;
       color: var(--text);
-
       padding: 13px 20px;
-
       border-radius: 13px;
-
       font-size: 15px;
       font-weight: 700;
     }
@@ -246,18 +219,13 @@
       color: var(--primary);
     }
 
-    /* =========================
-       LIVE CARD
-    ========================= */
+    /* ================= LIVE ================= */
 
     .live-card {
       border: 1px solid var(--border);
       border-radius: 24px;
-
       padding: 22px;
-
       background: #fbfcfb;
-
       box-shadow: var(--shadow);
     }
 
@@ -265,7 +233,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-
       margin-bottom: 18px;
     }
 
@@ -278,9 +245,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-
       color: var(--primary);
-
       font-size: 12px;
       font-weight: 700;
     }
@@ -288,23 +253,16 @@
     .live-dot {
       width: 8px;
       height: 8px;
-
       background: var(--primary);
-
       border-radius: 50%;
     }
 
     .mini-alert {
       background: white;
-
       border: 1px solid var(--border);
-
       border-radius: 14px;
-
       padding: 13px;
-
       margin-bottom: 10px;
-
       display: flex;
       gap: 12px;
       align-items: flex-start;
@@ -313,15 +271,11 @@
     .mini-icon {
       width: 36px;
       height: 36px;
-
       border-radius: 10px;
-
       background: var(--primary-light);
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       flex-shrink: 0;
     }
 
@@ -336,14 +290,11 @@
       font-size: 11px;
     }
 
-    /* =========================
-       MAIN
-    ========================= */
+    /* ================= MAIN ================= */
 
     main {
       max-width: 1180px;
       margin: auto;
-
       padding: 35px 20px 60px;
     }
 
@@ -351,7 +302,6 @@
       display: flex;
       align-items: flex-end;
       justify-content: space-between;
-
       margin-bottom: 18px;
     }
 
@@ -365,32 +315,22 @@
       margin-top: 3px;
     }
 
-    /* =========================
-       CATEGORIES
-    ========================= */
+    /* ================= CATEGORIES ================= */
 
     .categories {
       display: grid;
-
-      grid-template-columns: repeat(10, 1fr);
-
+      grid-template-columns: repeat(10,1fr);
       gap: 10px;
-
       margin-bottom: 35px;
     }
 
     .category {
       border: 1px solid var(--border);
-
       background: white;
-
       border-radius: 15px;
-
       padding: 14px 8px;
-
       text-align: center;
-
-      transition: 0.2s;
+      transition: .2s;
     }
 
     .category:hover {
@@ -413,39 +353,27 @@
       font-weight: 700;
     }
 
-    /* =========================
-       CONTENT GRID
-    ========================= */
+    /* ================= CONTENT ================= */
 
     .content-grid {
       display: grid;
-
       grid-template-columns: 1fr 1.15fr;
-
       gap: 20px;
     }
 
-    /* =========================
-       MAP
-    ========================= */
+    /* ================= MAP ================= */
 
     .map-card {
       background: white;
-
       border: 1px solid var(--border);
-
       border-radius: var(--radius);
-
       overflow: hidden;
-
       min-height: 470px;
     }
 
     .map-top {
       padding: 17px 18px;
-
       border-bottom: 1px solid var(--border);
-
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -457,165 +385,84 @@
 
     .map-filter {
       border: 1px solid var(--border);
-
       background: white;
-
       padding: 7px 10px;
-
       border-radius: 9px;
-
       font-size: 12px;
     }
 
     .fake-map {
       position: relative;
-
       height: 410px;
-
       overflow: hidden;
-
       background:
-        linear-gradient(25deg, transparent 46%, rgba(255,255,255,.8) 47%, transparent 49%),
-        linear-gradient(-20deg, transparent 48%, rgba(255,255,255,.8) 49%, transparent 51%),
-        linear-gradient(90deg, rgba(190, 205, 197, .35) 1px, transparent 1px),
-        linear-gradient(rgba(190, 205, 197, .35) 1px, transparent 1px);
-
-      background-size:
-        100% 100%,
-        100% 100%,
-        45px 45px,
-        45px 45px;
-
-      background-color: #eaf1ed;
+        linear-gradient(25deg,transparent 46%,rgba(255,255,255,.8) 47%,transparent 49%),
+        linear-gradient(-20deg,transparent 48%,rgba(255,255,255,.8) 49%,transparent 51%),
+        linear-gradient(90deg,rgba(190,205,197,.35) 1px,transparent 1px),
+        linear-gradient(rgba(190,205,197,.35) 1px,transparent 1px);
+      background-size:100% 100%,100% 100%,45px 45px,45px 45px;
+      background-color:#eaf1ed;
     }
 
     .map-shape {
       position: absolute;
-
       width: 70%;
       height: 75%;
-
       left: 15%;
       top: 13%;
-
       background: #dfe9e3;
-
       clip-path: polygon(
-        19% 0%,
-        47% 6%,
-        70% 3%,
-        89% 18%,
-        100% 40%,
-        91% 67%,
-        72% 72%,
-        65% 94%,
-        39% 88%,
-        22% 100%,
-        12% 78%,
-        0% 57%,
-        8% 34%
+        19% 0%,47% 6%,70% 3%,89% 18%,
+        100% 40%,91% 67%,72% 72%,65% 94%,
+        39% 88%,22% 100%,12% 78%,0% 57%,8% 34%
       );
     }
 
     .map-label {
       position: absolute;
-
       font-size: 11px;
       color: #68766f;
-
       font-weight: 700;
     }
 
-    .label-damascus {
-      top: 61%;
-      left: 47%;
-    }
-
-    .label-aleppo {
-      top: 25%;
-      left: 48%;
-    }
-
-    .label-homs {
-      top: 42%;
-      left: 48%;
-    }
-
-    .label-latakia {
-      top: 33%;
-      left: 27%;
-    }
+    .label-damascus { top:61%; left:47%; }
+    .label-aleppo { top:25%; left:48%; }
+    .label-homs { top:42%; left:48%; }
+    .label-latakia { top:33%; left:27%; }
 
     .map-marker {
       position: absolute;
-
       width: 15px;
       height: 15px;
-
       border-radius: 50%;
-
       border: 3px solid white;
-
       box-shadow: 0 2px 7px rgba(0,0,0,.2);
-
       z-index: 3;
     }
 
-    .marker-green {
-      background: var(--primary);
-    }
+    .marker-green { background:var(--primary); }
+    .marker-orange { background:var(--warning); }
+    .marker-red { background:var(--danger); }
 
-    .marker-orange {
-      background: var(--warning);
-    }
-
-    .marker-red {
-      background: var(--danger);
-    }
-
-    .marker-1 {
-      top: 61%;
-      left: 48%;
-    }
-
-    .marker-2 {
-      top: 42%;
-      left: 49%;
-    }
-
-    .marker-3 {
-      top: 27%;
-      left: 51%;
-    }
-
-    .marker-4 {
-      top: 34%;
-      left: 29%;
-    }
+    .marker-1 { top:61%; left:48%; }
+    .marker-2 { top:42%; left:49%; }
+    .marker-3 { top:27%; left:51%; }
+    .marker-4 { top:34%; left:29%; }
 
     .map-info {
       position: absolute;
-
-      bottom: 14px;
-      right: 14px;
-      left: 14px;
-
-      background: rgba(255,255,255,.94);
-
-      border: 1px solid var(--border);
-
-      border-radius: 12px;
-
-      padding: 10px 12px;
-
-      font-size: 11px;
-
-      color: var(--text-light);
+      bottom:14px;
+      right:14px;
+      left:14px;
+      background:rgba(255,255,255,.94);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:10px 12px;
+      font-size:11px;
+      color:var(--text-light);
     }
 
-    /* =========================
-       ALERTS
-    ========================= */
+    /* ================= ALERTS ================= */
 
     .alerts-card {
       display: flex;
@@ -624,557 +471,425 @@
     }
 
     .alert-card {
-      background: white;
-
-      border: 1px solid var(--border);
-
-      border-radius: var(--radius);
-
-      padding: 17px;
-
-      transition: 0.2s;
+      background:white;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:17px;
+      transition:.2s;
     }
 
     .alert-card:hover {
-      box-shadow: var(--shadow);
+      box-shadow:var(--shadow);
     }
 
     .alert-header {
-      display: flex;
-      justify-content: space-between;
-
-      gap: 10px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
     }
 
     .alert-main {
-      display: flex;
-      gap: 12px;
+      display:flex;
+      gap:12px;
     }
 
     .alert-icon {
-      width: 43px;
-      height: 43px;
-
-      border-radius: 12px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      font-size: 21px;
-
-      flex-shrink: 0;
+      width:43px;
+      height:43px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:21px;
+      flex-shrink:0;
     }
 
-    .electricity {
-      background: #fff5d9;
-    }
-
-    .water {
-      background: #e6f2ff;
-    }
-
-    .internet {
-      background: #eeeaff;
-    }
-
-    .road {
-      background: #fff0e2;
-    }
-
-    .fire {
-      background: #ffe8e8;
-    }
+    .electricity { background:#fff5d9; }
+    .water { background:#e6f2ff; }
+    .internet { background:#eeeaff; }
+    .road { background:#fff0e2; }
+    .fire { background:#ffe8e8; }
 
     .alert-title {
-      font-size: 14px;
-      font-weight: 800;
-
-      margin-bottom: 2px;
+      font-size:14px;
+      font-weight:800;
+      margin-bottom:2px;
     }
 
     .alert-location {
-      color: var(--text-light);
-
-      font-size: 12px;
+      color:var(--text-light);
+      font-size:12px;
     }
 
     .time {
-      color: var(--text-light);
-
-      font-size: 11px;
-
-      white-space: nowrap;
+      color:var(--text-light);
+      font-size:11px;
+      white-space:nowrap;
     }
 
     .alert-description {
-      margin-top: 11px;
-
-      color: #56625d;
-
-      font-size: 12px;
+      margin-top:11px;
+      color:#56625d;
+      font-size:12px;
     }
 
     .verification {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      margin-top: 13px;
-
-      padding-top: 12px;
-
-      border-top: 1px solid #edf0ee;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-top:13px;
+      padding-top:12px;
+      border-top:1px solid #edf0ee;
     }
 
     .verification-status {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-
-      font-size: 11px;
-      font-weight: 700;
+      display:flex;
+      align-items:center;
+      gap:6px;
+      font-size:11px;
+      font-weight:700;
     }
 
     .status-dot {
-      width: 7px;
-      height: 7px;
-
-      border-radius: 50%;
+      width:7px;
+      height:7px;
+      border-radius:50%;
     }
 
-    .status-yellow {
-      background: var(--warning);
-    }
-
-    .status-green {
-      background: var(--primary);
-    }
+    .status-yellow { background:var(--warning); }
+    .status-green { background:var(--primary); }
 
     .confirm-button {
-      border: 1px solid var(--border);
-
-      background: white;
-
-      padding: 6px 10px;
-
-      border-radius: 8px;
-
-      font-size: 11px;
-
-      font-weight: 700;
+      border:1px solid var(--border);
+      background:white;
+      padding:6px 10px;
+      border-radius:8px;
+      font-size:11px;
+      font-weight:700;
     }
 
     .confirm-button:hover {
-      border-color: var(--primary);
-      color: var(--primary);
+      border-color:var(--primary);
+      color:var(--primary);
     }
 
-    /* =========================
-       REPORT CTA
-    ========================= */
+    /* ================= REPORT CTA ================= */
 
     .report-section {
-      margin-top: 35px;
-
-      background: var(--primary);
-
-      border-radius: 22px;
-
-      padding: 27px 30px;
-
-      color: white;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 25px;
+      margin-top:35px;
+      background:var(--primary);
+      border-radius:22px;
+      padding:27px 30px;
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:25px;
     }
 
     .report-section h2 {
-      font-size: 22px;
-
-      margin-bottom: 4px;
+      font-size:22px;
+      margin-bottom:4px;
     }
 
     .report-section p {
-      opacity: .85;
-
-      font-size: 13px;
+      opacity:.85;
+      font-size:13px;
     }
 
     .report-button {
-      background: white;
-
-      color: var(--primary-dark);
-
-      border: none;
-
-      padding: 13px 20px;
-
-      border-radius: 12px;
-
-      font-weight: 800;
-
-      white-space: nowrap;
+      background:white;
+      color:var(--primary-dark);
+      border:none;
+      padding:13px 20px;
+      border-radius:12px;
+      font-weight:800;
+      white-space:nowrap;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
+    /* ================= FOOTER ================= */
 
     footer {
-      background: #17221d;
-
-      color: white;
-
-      padding: 30px 20px;
+      background:#17221d;
+      color:white;
+      padding:30px 20px;
     }
 
     .footer-inner {
-      max-width: 1180px;
-      margin: auto;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: space-between;
-
-      gap: 20px;
+      max-width:1180px;
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
     }
 
     footer p {
-      color: #aeb9b4;
-
-      font-size: 12px;
+      color:#aeb9b4;
+      font-size:12px;
     }
 
     .footer-brand {
-      font-weight: 800;
+      font-weight:800;
     }
 
-    /* =========================
-       MODAL
-    ========================= */
+    /* ================= MODALS ================= */
 
     .modal-overlay {
-      position: fixed;
-
-      inset: 0;
-
-      background: rgba(0,0,0,.45);
-
-      display: none;
-
-      align-items: center;
-      justify-content: center;
-
-      padding: 20px;
-
-      z-index: 500;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.45);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:500;
     }
 
     .modal-overlay.show {
-      display: flex;
+      display:flex;
     }
 
     .modal {
-      width: 100%;
-      max-width: 520px;
-
-      background: white;
-
-      border-radius: 22px;
-
-      padding: 24px;
-
-      box-shadow: 0 20px 70px rgba(0,0,0,.2);
+      width:100%;
+      max-width:520px;
+      background:white;
+      border-radius:22px;
+      padding:24px;
+      box-shadow:0 20px 70px rgba(0,0,0,.2);
+      max-height:90vh;
+      overflow-y:auto;
     }
 
     .modal-header {
-      display: flex;
-
-      justify-content: space-between;
-      align-items: center;
-
-      margin-bottom: 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:20px;
     }
 
     .modal-header h2 {
-      font-size: 21px;
+      font-size:21px;
     }
 
     .close-button {
-      border: none;
-
-      background: #f1f4f2;
-
-      width: 35px;
-      height: 35px;
-
-      border-radius: 10px;
-
-      font-size: 18px;
+      border:none;
+      background:#f1f4f2;
+      width:35px;
+      height:35px;
+      border-radius:10px;
+      font-size:18px;
     }
 
     .form-group {
-      margin-bottom: 15px;
+      margin-bottom:15px;
     }
 
     .form-group label {
-      display: block;
-
-      margin-bottom: 6px;
-
-      font-size: 12px;
-
-      font-weight: 700;
+      display:block;
+      margin-bottom:6px;
+      font-size:12px;
+      font-weight:700;
     }
 
     .form-group input,
     .form-group select,
     .form-group textarea {
-      width: 100%;
-
-      border: 1px solid var(--border);
-
-      border-radius: 11px;
-
-      padding: 11px 12px;
-
-      outline: none;
-
-      font-size: 13px;
-
-      background: white;
+      width:100%;
+      border:1px solid var(--border);
+      border-radius:11px;
+      padding:11px 12px;
+      outline:none;
+      font-size:13px;
+      background:white;
     }
 
     .form-group textarea {
-      min-height: 100px;
-
-      resize: vertical;
+      min-height:100px;
+      resize:vertical;
     }
 
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
-      border-color: var(--primary);
+      border-color:var(--primary);
     }
 
     .privacy-note {
-      background: var(--primary-light);
-
-      color: #38664f;
-
-      padding: 11px;
-
-      border-radius: 10px;
-
-      font-size: 11px;
-
-      margin-bottom: 17px;
+      background:var(--primary-light);
+      color:#38664f;
+      padding:11px;
+      border-radius:10px;
+      font-size:11px;
+      margin-bottom:17px;
     }
 
     .submit-report {
-      width: 100%;
-
-      border: none;
-
-      background: var(--primary);
-
-      color: white;
-
-      padding: 13px;
-
-      border-radius: 11px;
-
-      font-weight: 800;
+      width:100%;
+      border:none;
+      background:var(--primary);
+      color:white;
+      padding:13px;
+      border-radius:11px;
+      font-weight:800;
     }
 
-    /* =========================
-       LOCATION MODAL
-    ========================= */
+    /* ================= LOCATION ================= */
 
     .location-options {
-      display: grid;
-
-      gap: 10px;
+      display:grid;
+      gap:10px;
     }
 
     .location-option {
-      width: 100%;
-
-      background: white;
-
-      border: 1px solid var(--border);
-
-      border-radius: 12px;
-
-      padding: 14px;
-
-      text-align: right;
-
-      font-weight: 700;
+      width:100%;
+      background:white;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:14px;
+      text-align:right;
+      font-weight:700;
     }
 
     .location-option:hover {
-      border-color: var(--primary);
-
-      background: var(--primary-light);
+      border-color:var(--primary);
+      background:var(--primary-light);
     }
 
-    /* =========================
-       TOAST
-    ========================= */
+    .location-selects {
+      display:grid;
+      gap:12px;
+    }
+
+    /* ================= TOAST ================= */
 
     .toast {
-      position: fixed;
-
-      bottom: 25px;
-      right: 25px;
-
-      background: #18231f;
-
-      color: white;
-
-      padding: 13px 17px;
-
-      border-radius: 11px;
-
-      font-size: 12px;
-
-      opacity: 0;
-
-      pointer-events: none;
-
-      transform: translateY(15px);
-
-      transition: .25s;
-
-      z-index: 1000;
+      position:fixed;
+      bottom:25px;
+      right:25px;
+      background:#18231f;
+      color:white;
+      padding:13px 17px;
+      border-radius:11px;
+      font-size:12px;
+      opacity:0;
+      pointer-events:none;
+      transform:translateY(15px);
+      transition:.25s;
+      z-index:1000;
     }
 
     .toast.show {
-      opacity: 1;
-
-      transform: translateY(0);
+      opacity:1;
+      transform:translateY(0);
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================= */
+    /* ================= RESPONSIVE ================= */
 
-    @media (max-width: 950px) {
+    @media(max-width:950px) {
 
       .hero-inner {
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
       }
 
       .categories {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns:repeat(5,1fr);
       }
 
       .content-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
       }
     }
 
-    @media (max-width: 600px) {
+    @media(max-width:600px) {
 
       .header-inner {
-        min-height: 62px;
+        min-height:62px;
       }
 
       .brand-subtitle {
-        display: none;
+        display:none;
       }
 
       .location-button span {
-        display: none;
+        display:none;
       }
 
       .hero-inner {
-        padding-top: 32px;
-        padding-bottom: 30px;
+        padding-top:32px;
+        padding-bottom:30px;
       }
 
       .hero-content h1 {
-        font-size: 34px;
+        font-size:34px;
       }
 
       .hero-description {
-        font-size: 14px;
+        font-size:14px;
       }
 
       .hero-buttons {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display:grid;
+        grid-template-columns:1fr 1fr;
       }
 
       .hero-buttons button {
-        width: 100%;
+        width:100%;
       }
 
       .categories {
-        grid-template-columns: repeat(5, 1fr);
-
-        gap: 7px;
+        grid-template-columns:repeat(5,1fr);
+        gap:7px;
       }
 
       .category {
-        padding: 10px 4px;
+        padding:10px 4px;
       }
 
       .category-icon {
-        font-size: 18px;
+        font-size:18px;
       }
 
       .category-name {
-        font-size: 9px;
+        font-size:9px;
       }
 
       main {
-        padding: 25px 12px 45px;
+        padding:25px 12px 45px;
       }
 
       .section-heading h2 {
-        font-size: 19px;
+        font-size:19px;
       }
 
       .map-card {
-        min-height: 390px;
+        min-height:390px;
       }
 
       .fake-map {
-        height: 330px;
+        height:330px;
       }
 
       .report-section {
-        flex-direction: column;
-
-        align-items: stretch;
-
-        padding: 23px;
+        flex-direction:column;
+        align-items:stretch;
+        padding:23px;
       }
 
       .report-button {
-        width: 100%;
+        width:100%;
       }
 
       .footer-inner {
-        flex-direction: column;
-
-        align-items: flex-start;
+        flex-direction:column;
+        align-items:flex-start;
       }
 
       .toast {
-        left: 15px;
-        right: 15px;
-        bottom: 15px;
-
-        text-align: center;
+        left:15px;
+        right:15px;
+        bottom:15px;
+        text-align:center;
       }
     }
   </style>
@@ -1182,643 +897,290 @@
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================== -->
+<header>
+  <div class="header-inner">
 
-  <header>
+    <a href="#" class="brand">
 
-    <div class="header-inner">
+      <!-- شعار خريطة سوريا -->
+      <div class="logo">
 
-      <a href="#" class="brand">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 
-        <div class="brand-icon">
-          🇸🇾
-        </div>
+          <!-- خلفية دائرية -->
+          <rect
+            x="2"
+            y="2"
+            width="96"
+            height="96"
+            rx="28"
+            fill="#1f8f5f"
+          />
 
-        <div class="brand-text">
+          <!-- خريطة سوريا بشكل مبسط -->
+          <path
+            d="
+            M29 20
+            L43 15
+            L57 18
+            L72 14
+            L82 23
+            L78 34
+            L84 45
+            L78 55
+            L81 67
+            L69 75
+            L61 87
+            L49 82
+            L38 88
+            L32 76
+            L23 68
+            L27 56
+            L21 47
+            L27 38
+            L24 29
+            Z
+            "
+            fill="white"
+            opacity=".96"
+          />
 
-          <div class="brand-name">
-            سوريا الآن
-          </div>
+          <!-- خط نبض -->
+          <path
+            d="M31 49 L41 49 L45 42 L50 58 L55 47 L61 47 L65 41 L70 49"
+            fill="none"
+            stroke="#1f8f5f"
+            stroke-width="3.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
 
-          <div class="brand-subtitle">
-            ما يحدث حولك في الوقت الحقيقي
-          </div>
+        </svg>
 
-        </div>
+      </div>
 
-      </a>
+      <div class="brand-text">
+        <div class="brand-name">سوريا الآن</div>
+        <div class="brand-subtitle">ما يحدث حولك في الوقت الحقيقي</div>
+      </div>
 
-      <div class="header-actions">
+    </a>
+
+    <div class="header-actions">
+
+      <button
+        class="location-button"
+        onclick="openLocationModal()"
+      >
+        📍
+        <span id="currentLocation">اختر منطقتك</span>
+      </button>
+
+    </div>
+
+  </div>
+</header>
+
+
+<section class="hero">
+
+  <div class="hero-inner">
+
+    <div class="hero-content">
+
+      <h1>
+        اعرف ما يحدث
+        <br>
+        <span>حولك الآن.</span>
+      </h1>
+
+      <p class="hero-description">
+        منصة مجتمعية مجانية تساعد الناس في سوريا على معرفة
+        المشكلات والأحداث المحلية، والإبلاغ عنها، وتأكيدها
+        مع الحفاظ على خصوصية المستخدمين.
+      </p>
+
+      <div class="hero-buttons">
 
         <button
-          class="location-button"
-          onclick="openLocationModal()"
+          class="primary-button"
+          onclick="openReportModal()"
         >
-          📍
-          <span id="currentLocation">
-            اختر منطقتك
-          </span>
+          + أبلغ عن مشكلة
+        </button>
+
+        <button
+          class="secondary-button"
+          onclick="scrollToAlerts()"
+        >
+          شاهد البلاغات
         </button>
 
       </div>
 
     </div>
 
-  </header>
 
+    <div class="live-card">
 
-  <!-- =========================
-       HERO
-  ========================== -->
+      <div class="live-header">
 
-  <section class="hero">
+        <div class="live-title">
+          يحدث الآن
+        </div>
 
-    <div class="hero-inner">
-
-      <div class="hero-content">
-
-        <h1>
-          اعرف ما يحدث
-          <br>
-          <span>حولك الآن.</span>
-        </h1>
-
-        <p class="hero-description">
-          منصة مجتمعية مجانية تساعد الناس في سوريا على معرفة
-          المشكلات والأحداث المحلية، والإبلاغ عنها، وتأكيدها
-          مع الحفاظ على خصوصية المستخدمين.
-        </p>
-
-        <div class="hero-buttons">
-
-          <button
-            class="primary-button"
-            onclick="openReportModal()"
-          >
-            + أبلغ عن مشكلة
-          </button>
-
-          <button
-            class="secondary-button"
-            onclick="scrollToAlerts()"
-          >
-            شاهد البلاغات
-          </button>
-
+        <div class="live-status">
+          <span class="live-dot"></span>
+          مباشر
         </div>
 
       </div>
 
-
-      <!-- LIVE CARD -->
-
-      <div class="live-card">
-
-        <div class="live-header">
-
-          <div class="live-title">
-            يحدث الآن
-          </div>
-
-          <div class="live-status">
-            <span class="live-dot"></span>
-            مباشر
-          </div>
-
+      <div class="mini-alert">
+        <div class="mini-icon">⚡</div>
+        <div>
+          <strong>انقطاع كهرباء</strong>
+          <small>دمشق · منذ 12 دقيقة</small>
         </div>
+      </div>
 
-
-        <div class="mini-alert">
-
-          <div class="mini-icon">
-            ⚡
-          </div>
-
-          <div>
-
-            <strong>
-              انقطاع كهرباء
-            </strong>
-
-            <small>
-              دمشق · منذ 12 دقيقة
-            </small>
-
-          </div>
-
+      <div class="mini-alert">
+        <div class="mini-icon">🚰</div>
+        <div>
+          <strong>ضعف في ضخ المياه</strong>
+          <small>حمص · منذ 24 دقيقة</small>
         </div>
+      </div>
 
-
-        <div class="mini-alert">
-
-          <div class="mini-icon">
-            🚰
-          </div>
-
-          <div>
-
-            <strong>
-              ضعف في ضخ المياه
-            </strong>
-
-            <small>
-              حمص · منذ 24 دقيقة
-            </small>
-
-          </div>
-
+      <div class="mini-alert">
+        <div class="mini-icon">🚧</div>
+        <div>
+          <strong>ازدحام وإغلاق جزئي للطريق</strong>
+          <small>حلب · منذ 31 دقيقة</small>
         </div>
-
-
-        <div class="mini-alert">
-
-          <div class="mini-icon">
-            🚧
-          </div>
-
-          <div>
-
-            <strong>
-              ازدحام وإغلاق جزئي للطريق
-            </strong>
-
-            <small>
-              حلب · منذ 31 دقيقة
-            </small>
-
-          </div>
-
-        </div>
-
       </div>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
 
 
-  <!-- =========================
-       MAIN
-  ========================== -->
+<main>
 
-  <main>
+  <div class="section-heading">
 
-    <!-- CATEGORIES -->
-
-    <div class="section-heading">
-
-      <div>
-
-        <h2>
-          ماذا يحدث؟
-        </h2>
-
-        <p>
-          اختر نوع البلاغ الذي تريد متابعته
-        </p>
-
-      </div>
-
+    <div>
+      <h2>ماذا يحدث؟</h2>
+      <p>اختر نوع البلاغ الذي تريد متابعته</p>
     </div>
 
-
-    <div class="categories">
-
-      <button class="category active" onclick="filterCategory(this, 'all')">
-        <div class="category-icon">📍</div>
-        <div class="category-name">الكل</div>
-      </button>
-
-      <button class="category" onclick="filterCategory(this, 'electricity')">
-        <div class="category-icon">⚡</div>
-        <div class="category-name">كهرباء</div>
-      </button>
-
-      <button class="category" onclick="filterCategory(this, 'water')">
-        <div class="category-icon">🚰</div>
-        <div class="category-name">مياه</div>
-      </button>
-
-      <button class="category" onclick="filterCategory(this, 'internet')">
-        <div class="category-icon">📡</div>
-        <div class="category-name">إنترنت</div>
-      </button>
-
-      <button class="category" onclick="filterCategory(this, 'road')">
-        <div class="category-icon">🚧</div>
-        <div class="category-name">طرق</div>
-      </button>
-
-      <button class="category" onclick="filterCategory(this, 'fire')">
-        <div class="category-icon">🔥</div>
-        <div class="category-name">حريق</div>
-      </button>
-
-      <button class="category" onclick="filterCategory(this, 'accident')">
-        <div class="category-icon">🚑</div>
-        <div class="category-name">حادث</div>
-      </button>
-
-      <button class="category" onclick="filterCategory(this, 'danger')">
-        <div class="category-icon">⚠️</div>
-        <div class="category-name">خطر</div>
-      </button>
-
-      <button class="category" onclick="filterCategory(this, 'weather')">
-        <div class="category-icon">🌧️</div>
-        <div class="category-name">طقس</div>
-      </button>
-
-      <button class="category" onclick="filterCategory(this, 'other')">
-        <div class="category-icon">📢</div>
-        <div class="category-name">أخرى</div>
-      </button>
-
-    </div>
+  </div>
 
 
-    <!-- CONTENT -->
+  <div class="categories">
 
-    <div class="content-grid">
+    <button class="category active" onclick="filterCategory(this,'all')">
+      <div class="category-icon">📍</div>
+      <div class="category-name">الكل</div>
+    </button>
+
+    <button class="category" onclick="filterCategory(this,'electricity')">
+      <div class="category-icon">⚡</div>
+      <div class="category-name">كهرباء</div>
+    </button>
+
+    <button class="category" onclick="filterCategory(this,'water')">
+      <div class="category-icon">🚰</div>
+      <div class="category-name">مياه</div>
+    </button>
+
+    <button class="category" onclick="filterCategory(this,'internet')">
+      <div class="category-icon">📡</div>
+      <div class="category-name">إنترنت</div>
+    </button>
+
+    <button class="category" onclick="filterCategory(this,'road')">
+      <div class="category-icon">🚧</div>
+      <div class="category-name">طرق</div>
+    </button>
+
+    <button class="category" onclick="filterCategory(this,'fire')">
+      <div class="category-icon">🔥</div>
+      <div class="category-name">حريق</div>
+    </button>
+
+    <button class="category" onclick="filterCategory(this,'accident')">
+      <div class="category-icon">🚑</div>
+      <div class="category-name">حادث</div>
+    </button>
+
+    <button class="category" onclick="filterCategory(this,'danger')">
+      <div class="category-icon">⚠️</div>
+      <div class="category-name">خطر</div>
+    </button>
+
+    <button class="category" onclick="filterCategory(this,'weather')">
+      <div class="category-icon">🌧️</div>
+      <div class="category-name">طقس</div>
+    </button>
+
+    <button class="category" onclick="filterCategory(this,'other')">
+      <div class="category-icon">📢</div>
+      <div class="category-name">أخرى</div>
+    </button>
+
+  </div>
 
 
-      <!-- MAP -->
-
-      <div class="map-card">
-
-        <div class="map-top">
-
-          <strong>
-            خريطة البلاغات
-          </strong>
-
-          <select class="map-filter">
-            <option>كل المناطق</option>
-            <option>دمشق</option>
-            <option>حلب</option>
-            <option>حمص</option>
-            <option>اللاذقية</option>
-          </select>
-
-        </div>
+  <div class="content-grid">
 
 
-        <div class="fake-map">
+    <div class="map-card">
 
-          <div class="map-shape"></div>
+      <div class="map-top">
 
-          <div class="map-label label-damascus">
-            دمشق
-          </div>
+        <strong>خريطة البلاغات</strong>
 
-          <div class="map-label label-aleppo">
-            حلب
-          </div>
-
-          <div class="map-label label-homs">
-            حمص
-          </div>
-
-          <div class="map-label label-latakia">
-            اللاذقية
-          </div>
-
-
-          <div class="map-marker marker-green marker-1"></div>
-
-          <div class="map-marker marker-orange marker-2"></div>
-
-          <div class="map-marker marker-red marker-3"></div>
-
-          <div class="map-marker marker-orange marker-4"></div>
-
-
-          <div class="map-info">
-            الخريطة الحالية تجريبية. في المرحلة التالية
-            سنربطها بخريطة حقيقية وبلاغات فعلية.
-          </div>
-
-        </div>
+        <select class="map-filter">
+          <option>كل المناطق</option>
+          <option>دمشق</option>
+          <option>ريف دمشق</option>
+          <option>حلب</option>
+          <option>حمص</option>
+          <option>حماة</option>
+          <option>اللاذقية</option>
+          <option>طرطوس</option>
+          <option>إدلب</option>
+          <option>الرقة</option>
+          <option>دير الزور</option>
+          <option>الحسكة</option>
+          <option>درعا</option>
+          <option>السويداء</option>
+          <option>القنيطرة</option>
+        </select>
 
       </div>
 
 
-      <!-- ALERTS -->
-
-      <div>
-
-        <div class="section-heading">
-
-          <div>
-
-            <h2>
-              آخر البلاغات
-            </h2>
-
-            <p>
-              بلاغات مجتمعية حديثة
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="alerts-card" id="alertsList">
-
-
-          <!-- ALERT 1 -->
-
-          <article class="alert-card" data-category="electricity">
-
-            <div class="alert-header">
-
-              <div class="alert-main">
-
-                <div class="alert-icon electricity">
-                  ⚡
-                </div>
-
-                <div>
-
-                  <div class="alert-title">
-                    انقطاع الكهرباء
-                  </div>
-
-                  <div class="alert-location">
-                    دمشق · المزة
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="time">
-                منذ 12 د
-              </div>
-
-            </div>
-
-            <div class="alert-description">
-              انقطاع الكهرباء في المنطقة منذ حوالي ساعة.
-            </div>
-
-            <div class="verification">
-
-              <div class="verification-status">
-
-                <span class="status-dot status-yellow"></span>
-
-                غير مؤكد بالكامل
-
-              </div>
-
-              <button
-                class="confirm-button"
-                onclick="confirmReport(this)"
-              >
-                ✓ حدث عندي أيضاً
-              </button>
-
-            </div>
-
-          </article>
-
-
-          <!-- ALERT 2 -->
-
-          <article class="alert-card" data-category="water">
-
-            <div class="alert-header">
-
-              <div class="alert-main">
-
-                <div class="alert-icon water">
-                  🚰
-                </div>
-
-                <div>
-
-                  <div class="alert-title">
-                    ضعف في المياه
-                  </div>
-
-                  <div class="alert-location">
-                    حمص · حي الإنشاءات
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="time">
-                منذ 24 د
-              </div>
-
-            </div>
-
-            <div class="alert-description">
-              ضعف شديد في ضخ المياه بحسب عدة بلاغات من السكان.
-            </div>
-
-            <div class="verification">
-
-              <div class="verification-status">
-
-                <span class="status-dot status-green"></span>
-
-                مؤكد مجتمعياً
-
-              </div>
-
-              <button
-                class="confirm-button"
-                onclick="confirmReport(this)"
-              >
-                ✓ حدث عندي أيضاً
-              </button>
-
-            </div>
-
-          </article>
-
-
-          <!-- ALERT 3 -->
-
-          <article class="alert-card" data-category="internet">
-
-            <div class="alert-header">
-
-              <div class="alert-main">
-
-                <div class="alert-icon internet">
-                  📡
-                </div>
-
-                <div>
-
-                  <div class="alert-title">
-                    ضعف الإنترنت
-                  </div>
-
-                  <div class="alert-location">
-                    حلب · الحمدانية
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="time">
-                منذ 28 د
-              </div>
-
-            </div>
-
-            <div class="alert-description">
-              بطء شديد في خدمة الإنترنت لدى عدد من المستخدمين.
-            </div>
-
-            <div class="verification">
-
-              <div class="verification-status">
-
-                <span class="status-dot status-yellow"></span>
-
-                يحتاج تأكيداً
-
-              </div>
-
-              <button
-                class="confirm-button"
-                onclick="confirmReport(this)"
-              >
-                ✓ حدث عندي أيضاً
-              </button>
-
-            </div>
-
-          </article>
-
-
-          <!-- ALERT 4 -->
-
-          <article class="alert-card" data-category="road">
-
-            <div class="alert-header">
-
-              <div class="alert-main">
-
-                <div class="alert-icon road">
-                  🚧
-                </div>
-
-                <div>
-
-                  <div class="alert-title">
-                    ازدحام شديد
-                  </div>
-
-                  <div class="alert-location">
-                    دمشق · طريق المطار
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="time">
-                منذ 35 د
-              </div>
-
-            </div>
-
-            <div class="alert-description">
-              ازدحام شديد وتباطؤ في حركة السير على الطريق.
-            </div>
-
-            <div class="verification">
-
-              <div class="verification-status">
-
-                <span class="status-dot status-green"></span>
-
-                مؤكد مجتمعياً
-
-              </div>
-
-              <button
-                class="confirm-button"
-                onclick="confirmReport(this)"
-              >
-                ✓ حدث عندي أيضاً
-              </button>
-
-            </div>
-
-          </article>
-
-
-          <!-- ALERT 5 -->
-
-          <article class="alert-card" data-category="fire">
-
-            <div class="alert-header">
-
-              <div class="alert-main">
-
-                <div class="alert-icon fire">
-                  🔥
-                </div>
-
-                <div>
-
-                  <div class="alert-title">
-                    حريق
-                  </div>
-
-                  <div class="alert-location">
-                    اللاذقية · المنطقة الصناعية
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="time">
-                منذ 42 د
-              </div>
-
-            </div>
-
-            <div class="alert-description">
-              بلاغ أولي عن حريق في المنطقة الصناعية.
-            </div>
-
-            <div class="verification">
-
-              <div class="verification-status">
-
-                <span class="status-dot status-yellow"></span>
-
-                بلاغ أولي
-
-              </div>
-
-              <button
-                class="confirm-button"
-                onclick="confirmReport(this)"
-              >
-                ✓ شاهدته أيضاً
-              </button>
-
-            </div>
-
-          </article>
-
-
+      <div class="fake-map">
+
+        <div class="map-shape"></div>
+
+        <div class="map-label label-damascus">دمشق</div>
+        <div class="map-label label-aleppo">حلب</div>
+        <div class="map-label label-homs">حمص</div>
+        <div class="map-label label-latakia">اللاذقية</div>
+
+        <div class="map-marker marker-green marker-1"></div>
+        <div class="map-marker marker-orange marker-2"></div>
+        <div class="map-marker marker-red marker-3"></div>
+        <div class="map-marker marker-orange marker-4"></div>
+
+        <div class="map-info">
+          الخريطة الحالية تجريبية. في المرحلة التالية
+          سنربطها بخريطة حقيقية وبلاغات فعلية.
         </div>
 
       </div>
@@ -1826,488 +1188,1055 @@
     </div>
 
 
-    <!-- REPORT CTA -->
+    <div>
 
-    <section class="report-section">
+      <div class="section-heading">
 
-      <div>
-
-        <h2>
-          هل يحدث شيء في منطقتك؟
-        </h2>
-
-        <p>
-          ساعد الناس من حولك على معرفة ما يحدث.
-          لا نعرض موقعك الدقيق للآخرين.
-        </p>
-
-      </div>
-
-      <button
-        class="report-button"
-        onclick="openReportModal()"
-      >
-        + أرسل بلاغاً
-      </button>
-
-    </section>
-
-  </main>
-
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
-  <footer>
-
-    <div class="footer-inner">
-
-      <div>
-
-        <div class="footer-brand">
-          🇸🇾 سوريا الآن
+        <div>
+          <h2>آخر البلاغات</h2>
+          <p>بلاغات مجتمعية حديثة</p>
         </div>
 
-        <p>
-          منصة مجتمعية مجانية.
-        </p>
+      </div>
+
+
+      <div class="alerts-card" id="alertsList">
+
+
+        <article class="alert-card" data-category="electricity">
+
+          <div class="alert-header">
+
+            <div class="alert-main">
+
+              <div class="alert-icon electricity">⚡</div>
+
+              <div>
+                <div class="alert-title">انقطاع الكهرباء</div>
+                <div class="alert-location">دمشق · المزة</div>
+              </div>
+
+            </div>
+
+            <div class="time">منذ 12 د</div>
+
+          </div>
+
+          <div class="alert-description">
+            انقطاع الكهرباء في المنطقة منذ حوالي ساعة.
+          </div>
+
+          <div class="verification">
+
+            <div class="verification-status">
+              <span class="status-dot status-yellow"></span>
+              غير مؤكد بالكامل
+            </div>
+
+            <button
+              class="confirm-button"
+              onclick="confirmReport(this)"
+            >
+              ✓ حدث عندي أيضاً
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <article class="alert-card" data-category="water">
+
+          <div class="alert-header">
+
+            <div class="alert-main">
+
+              <div class="alert-icon water">🚰</div>
+
+              <div>
+                <div class="alert-title">ضعف في المياه</div>
+                <div class="alert-location">حمص · حي الإنشاءات</div>
+              </div>
+
+            </div>
+
+            <div class="time">منذ 24 د</div>
+
+          </div>
+
+          <div class="alert-description">
+            ضعف شديد في ضخ المياه بحسب عدة بلاغات من السكان.
+          </div>
+
+          <div class="verification">
+
+            <div class="verification-status">
+              <span class="status-dot status-green"></span>
+              مؤكد مجتمعياً
+            </div>
+
+            <button
+              class="confirm-button"
+              onclick="confirmReport(this)"
+            >
+              ✓ حدث عندي أيضاً
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <article class="alert-card" data-category="internet">
+
+          <div class="alert-header">
+
+            <div class="alert-main">
+
+              <div class="alert-icon internet">📡</div>
+
+              <div>
+                <div class="alert-title">ضعف الإنترنت</div>
+                <div class="alert-location">حلب · الحمدانية</div>
+              </div>
+
+            </div>
+
+            <div class="time">منذ 28 د</div>
+
+          </div>
+
+          <div class="alert-description">
+            بطء شديد في خدمة الإنترنت لدى عدد من المستخدمين.
+          </div>
+
+          <div class="verification">
+
+            <div class="verification-status">
+              <span class="status-dot status-yellow"></span>
+              يحتاج تأكيداً
+            </div>
+
+            <button
+              class="confirm-button"
+              onclick="confirmReport(this)"
+            >
+              ✓ حدث عندي أيضاً
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <article class="alert-card" data-category="road">
+
+          <div class="alert-header">
+
+            <div class="alert-main">
+
+              <div class="alert-icon road">🚧</div>
+
+              <div>
+                <div class="alert-title">ازدحام شديد</div>
+                <div class="alert-location">دمشق · طريق المطار</div>
+              </div>
+
+            </div>
+
+            <div class="time">منذ 35 د</div>
+
+          </div>
+
+          <div class="alert-description">
+            ازدحام شديد وتباطؤ في حركة السير على الطريق.
+          </div>
+
+          <div class="verification">
+
+            <div class="verification-status">
+              <span class="status-dot status-green"></span>
+              مؤكد مجتمعياً
+            </div>
+
+            <button
+              class="confirm-button"
+              onclick="confirmReport(this)"
+            >
+              ✓ حدث عندي أيضاً
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <article class="alert-card" data-category="fire">
+
+          <div class="alert-header">
+
+            <div class="alert-main">
+
+              <div class="alert-icon fire">🔥</div>
+
+              <div>
+                <div class="alert-title">حريق</div>
+                <div class="alert-location">اللاذقية · المنطقة الصناعية</div>
+              </div>
+
+            </div>
+
+            <div class="time">منذ 42 د</div>
+
+          </div>
+
+          <div class="alert-description">
+            بلاغ أولي عن حريق في المنطقة الصناعية.
+          </div>
+
+          <div class="verification">
+
+            <div class="verification-status">
+              <span class="status-dot status-yellow"></span>
+              بلاغ أولي
+            </div>
+
+            <button
+              class="confirm-button"
+              onclick="confirmReport(this)"
+            >
+              ✓ شاهدته أيضاً
+            </button>
+
+          </div>
+
+        </article>
+
 
       </div>
+
+    </div>
+
+  </div>
+
+
+  <section class="report-section">
+
+    <div>
+
+      <h2>هل يحدث شيء في منطقتك؟</h2>
 
       <p>
-        البلاغات المجتمعية ليست معلومات رسمية بالضرورة.
+        ساعد الناس من حولك على معرفة ما يحدث.
+        لا نعرض موقعك الدقيق للآخرين.
       </p>
 
     </div>
 
-  </footer>
+    <button
+      class="report-button"
+      onclick="openReportModal()"
+    >
+      + أرسل بلاغاً
+    </button>
+
+  </section>
+
+</main>
 
 
-  <!-- =========================
-       REPORT MODAL
-  ========================== -->
+<footer>
 
-  <div
-    class="modal-overlay"
-    id="reportModal"
-    onclick="closeModalOutside(event, 'reportModal')"
-  >
+  <div class="footer-inner">
 
-    <div class="modal">
+    <div>
+      <div class="footer-brand">سوريا الآن</div>
+      <p>منصة مجتمعية مجانية.</p>
+    </div>
 
-      <div class="modal-header">
+    <p>
+      البلاغات المجتمعية ليست معلومات رسمية بالضرورة.
+    </p>
 
-        <h2>
-          أبلغ عن مشكلة
-        </h2>
+  </div>
 
-        <button
-          class="close-button"
-          onclick="closeModal('reportModal')"
-        >
-          ×
-        </button>
+</footer>
+
+
+<!-- ================= REPORT MODAL ================= -->
+
+<div
+  class="modal-overlay"
+  id="reportModal"
+  onclick="closeModalOutside(event,'reportModal')"
+>
+
+  <div class="modal">
+
+    <div class="modal-header">
+
+      <h2>أبلغ عن مشكلة</h2>
+
+      <button
+        class="close-button"
+        onclick="closeModal('reportModal')"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="privacy-note">
+      🔒 خصوصيتك مهمة.
+      في النظام الحقيقي لن يتم عرض موقعك الدقيق
+      للمستخدمين الآخرين.
+    </div>
+
+
+    <form onsubmit="submitReport(event)">
+
+      <div class="form-group">
+
+        <label>نوع البلاغ</label>
+
+        <select required>
+
+          <option value="">اختر نوع البلاغ</option>
+
+          <option>⚡ كهرباء</option>
+          <option>🚰 مياه</option>
+          <option>📡 إنترنت واتصالات</option>
+          <option>🚧 طرق وإغلاقات</option>
+          <option>🔥 حريق</option>
+          <option>🚑 حادث</option>
+          <option>⚠️ خطر عام</option>
+          <option>🌧️ كارثة طبيعية</option>
+          <option>🛠️ عطل أو مشكلة خدمة</option>
+          <option>📢 أخرى</option>
+
+        </select>
 
       </div>
 
 
-      <div class="privacy-note">
+      <div class="form-group">
 
-        🔒 خصوصيتك مهمة.
-        في النظام الحقيقي لن يتم عرض موقعك الدقيق
-        للمستخدمين الآخرين.
+        <label>المحافظة</label>
+
+        <select
+          id="reportGovernorate"
+          onchange="updateReportAreas()"
+          required
+        >
+
+          <option value="">اختر المحافظة</option>
+
+        </select>
 
       </div>
 
 
-      <form onsubmit="submitReport(event)">
+      <div class="form-group">
 
-        <div class="form-group">
+        <label>المدينة / المنطقة</label>
 
-          <label>
-            نوع البلاغ
-          </label>
-
-          <select required>
-
-            <option value="">
-              اختر نوع البلاغ
-            </option>
-
-            <option>⚡ كهرباء</option>
-            <option>🚰 مياه</option>
-            <option>📡 إنترنت واتصالات</option>
-            <option>🚧 طرق وإغلاقات</option>
-            <option>🔥 حريق</option>
-            <option>🚑 حادث</option>
-            <option>⚠️ خطر عام</option>
-            <option>🌧️ كارثة طبيعية</option>
-            <option>🛠️ عطل أو مشكلة خدمة</option>
-            <option>📢 أخرى</option>
-
-          </select>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>
-            المنطقة
-          </label>
-
-          <select required>
-
-            <option value="">
-              اختر المنطقة
-            </option>
-
-            <option>دمشق</option>
-            <option>ريف دمشق</option>
-            <option>حلب</option>
-            <option>حمص</option>
-            <option>حماة</option>
-            <option>اللاذقية</option>
-            <option>طرطوس</option>
-            <option>إدلب</option>
-            <option>درعا</option>
-            <option>السويداء</option>
-            <option>دير الزور</option>
-            <option>الرقة</option>
-            <option>الحسكة</option>
-
-          </select>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>
-            ماذا يحدث؟
-          </label>
-
-          <textarea
-            required
-            placeholder="اكتب وصفاً مختصراً وواضحاً..."
-          ></textarea>
-
-        </div>
-
-
-        <button
-          type="submit"
-          class="submit-report"
+        <select
+          id="reportArea"
+          required
+          disabled
         >
-          إرسال البلاغ
-        </button>
 
-      </form>
+          <option value="">
+            اختر المحافظة أولاً
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>ماذا يحدث؟</label>
+
+        <textarea
+          required
+          placeholder="اكتب وصفاً مختصراً وواضحاً..."
+        ></textarea>
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="submit-report"
+      >
+        إرسال البلاغ
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<!-- ================= LOCATION MODAL ================= -->
+
+<div
+  class="modal-overlay"
+  id="locationModal"
+  onclick="closeModalOutside(event,'locationModal')"
+>
+
+  <div class="modal">
+
+    <div class="modal-header">
+
+      <h2>اختر منطقتك</h2>
+
+      <button
+        class="close-button"
+        onclick="closeModal('locationModal')"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="location-selects">
+
+      <div class="form-group">
+
+        <label>المحافظة</label>
+
+        <select
+          id="locationGovernorate"
+          onchange="updateLocationAreas()"
+        >
+
+          <option value="">اختر المحافظة</option>
+
+        </select>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label>المدينة / المنطقة</label>
+
+        <select
+          id="locationArea"
+          disabled
+        >
+
+          <option value="">
+            اختر المحافظة أولاً
+          </option>
+
+        </select>
+
+      </div>
+
+      <button
+        class="primary-button"
+        onclick="saveLocation()"
+      >
+        حفظ المنطقة
+      </button>
 
     </div>
 
   </div>
 
-
-  <!-- =========================
-       LOCATION MODAL
-  ========================== -->
-
-  <div
-    class="modal-overlay"
-    id="locationModal"
-    onclick="closeModalOutside(event, 'locationModal')"
-  >
-
-    <div class="modal">
-
-      <div class="modal-header">
-
-        <h2>
-          اختر منطقتك
-        </h2>
-
-        <button
-          class="close-button"
-          onclick="closeModal('locationModal')"
-        >
-          ×
-        </button>
-
-      </div>
+</div>
 
 
-      <div class="location-options">
-
-        <button
-          class="location-option"
-          onclick="selectLocation('دمشق')"
-        >
-          📍 دمشق
-        </button>
-
-        <button
-          class="location-option"
-          onclick="selectLocation('حلب')"
-        >
-          📍 حلب
-        </button>
-
-        <button
-          class="location-option"
-          onclick="selectLocation('حمص')"
-        >
-          📍 حمص
-        </button>
-
-        <button
-          class="location-option"
-          onclick="selectLocation('حماة')"
-        >
-          📍 حماة
-        </button>
-
-        <button
-          class="location-option"
-          onclick="selectLocation('اللاذقية')"
-        >
-          📍 اللاذقية
-        </button>
-
-        <button
-          class="location-option"
-          onclick="selectLocation('طرطوس')"
-        >
-          📍 طرطوس
-        </button>
-
-      </div>
-
-    </div>
-
-  </div>
+<div class="toast" id="toast"></div>
 
 
-  <!-- TOAST -->
+<script>
 
-  <div
-    class="toast"
-    id="toast"
-  ></div>
+  /* =====================================================
+     المحافظات السورية
+  ===================================================== */
+
+  const syriaLocations = {
+
+    "دمشق": [
+      "دمشق المدينة",
+      "المزة",
+      "كفرسوسة",
+      "الميدان",
+      "برزة",
+      "ركن الدين",
+      "القنوات",
+      "باب توما",
+      "القصاع",
+      "العدوي",
+      "العباسيين",
+      "القدم",
+      "دمر",
+      "المالكي"
+    ],
+
+    "ريف دمشق": [
+      "دوما",
+      "حرستا",
+      "عربين",
+      "داريا",
+      "معضمية الشام",
+      "جرمانا",
+      "صحنايا",
+      "قطنا",
+      "التل",
+      "النبك",
+      "الزبداني",
+      "يبرود",
+      "قدسيا",
+      "الكسوة",
+      "القطيفة"
+    ],
+
+    "حلب": [
+      "مدينة حلب",
+      "الأعظمية",
+      "الحمدانية",
+      "الجميلية",
+      "السكري",
+      "صلاح الدين",
+      "الشعار",
+      "الأنصاري",
+      "الشيخ مقصود",
+      "عفرين",
+      "الباب",
+      "منبج",
+      "جرابلس",
+      "إعزاز"
+    ],
+
+    "حمص": [
+      "مدينة حمص",
+      "الإنشاءات",
+      "الوعر",
+      "الخالدية",
+      "بابا عمرو",
+      "الحميدية",
+      "الرستن",
+      "تلبيسة",
+      "تدمر",
+      "القصير",
+      "تلكلخ"
+    ],
+
+    "حماة": [
+      "مدينة حماة",
+      "الحميدية",
+      "القصور",
+      "الطوافرة",
+      "محردة",
+      "السقيلبية",
+      "مصياف",
+      "السلمية",
+      "صوران",
+      "طيبة الإمام"
+    ],
+
+    "اللاذقية": [
+      "مدينة اللاذقية",
+      "الصليبة",
+      "الرمل الجنوبي",
+      "مشروع الصليبة",
+      "جبلة",
+      "القرداحة",
+      "الحفة",
+      "صلنفة",
+      "كسب"
+    ],
+
+    "طرطوس": [
+      "مدينة طرطوس",
+      "بانياس",
+      "صافيتا",
+      "الدريكيش",
+      "الشيخ بدر",
+      "القدموس",
+      "حصين البحر"
+    ],
+
+    "إدلب": [
+      "مدينة إدلب",
+      "معرة النعمان",
+      "جسر الشغور",
+      "أريحا",
+      "سرمدا",
+      "الدانا",
+      "سلقين",
+      "كفر تخاريم",
+      "حارم",
+      "معرة مصرين"
+    ],
+
+    "الرقة": [
+      "مدينة الرقة",
+      "تل أبيض",
+      "عين عيسى",
+      "السبخة",
+      "معدان"
+    ],
+
+    "دير الزور": [
+      "مدينة دير الزور",
+      "الميادين",
+      "البوكمال",
+      "العشارة",
+      "موحسن",
+      "هجين"
+    ],
+
+    "الحسكة": [
+      "مدينة الحسكة",
+      "القامشلي",
+      "رأس العين",
+      "عامودا",
+      "الدرباسية",
+      "المالكية",
+      "الشدادي",
+      "تل تمر"
+    ],
+
+    "درعا": [
+      "مدينة درعا",
+      "درعا البلد",
+      "نوى",
+      "جاسم",
+      "الحراك",
+      "الصنمين",
+      "طفس",
+      "إزرع",
+      "بصرى الشام"
+    ],
+
+    "السويداء": [
+      "مدينة السويداء",
+      "شهبا",
+      "صلخد",
+      "القريا",
+      "عرمان",
+      "قنوات",
+      "المزرعة"
+    ],
+
+    "القنيطرة": [
+      "مدينة القنيطرة",
+      "خان أرنبة",
+      "جباتا الخشب",
+      "الحضر",
+      "مسحرة",
+      "بئر عجم",
+      "الحميدية"
+    ]
+
+  };
 
 
-  <!-- =========================
-       JAVASCRIPT
-  ========================== -->
+  /* =====================================================
+     تحميل المحافظات في القوائم
+  ===================================================== */
 
-  <script>
+  function populateGovernorates() {
 
-    /* =========================
-       MODALS
-    ========================== */
+    const reportSelect =
+      document.getElementById("reportGovernorate");
 
-    function openReportModal() {
+    const locationSelect =
+      document.getElementById("locationGovernorate");
 
-      document
-        .getElementById("reportModal")
-        .classList
-        .add("show");
+
+    Object.keys(syriaLocations).forEach(function(governorate) {
+
+      const option1 =
+        document.createElement("option");
+
+      option1.value = governorate;
+      option1.textContent = governorate;
+
+      reportSelect.appendChild(option1);
+
+
+      const option2 =
+        document.createElement("option");
+
+      option2.value = governorate;
+      option2.textContent = governorate;
+
+      locationSelect.appendChild(option2);
+
+    });
+
+  }
+
+
+  /* =====================================================
+     مناطق البلاغ
+  ===================================================== */
+
+  function updateReportAreas() {
+
+    const governorate =
+      document.getElementById("reportGovernorate").value;
+
+    const area =
+      document.getElementById("reportArea");
+
+
+    area.innerHTML = "";
+
+    if (!governorate) {
+
+      area.disabled = true;
+
+      const option =
+        document.createElement("option");
+
+      option.textContent =
+        "اختر المحافظة أولاً";
+
+      area.appendChild(option);
+
+      return;
+    }
+
+
+    area.disabled = false;
+
+
+    const first =
+      document.createElement("option");
+
+    first.value = "";
+
+    first.textContent =
+      "اختر المدينة / المنطقة";
+
+    area.appendChild(first);
+
+
+    syriaLocations[governorate].forEach(function(item) {
+
+      const option =
+        document.createElement("option");
+
+      option.value = item;
+
+      option.textContent = item;
+
+      area.appendChild(option);
+
+    });
+
+  }
+
+
+  /* =====================================================
+     مناطق الموقع
+  ===================================================== */
+
+  function updateLocationAreas() {
+
+    const governorate =
+      document.getElementById("locationGovernorate").value;
+
+    const area =
+      document.getElementById("locationArea");
+
+
+    area.innerHTML = "";
+
+
+    if (!governorate) {
+
+      area.disabled = true;
+
+      const option =
+        document.createElement("option");
+
+      option.textContent =
+        "اختر المحافظة أولاً";
+
+      area.appendChild(option);
+
+      return;
+    }
+
+
+    area.disabled = false;
+
+
+    const first =
+      document.createElement("option");
+
+    first.value = "";
+
+    first.textContent =
+      "اختر المدينة / المنطقة";
+
+    area.appendChild(first);
+
+
+    syriaLocations[governorate].forEach(function(item) {
+
+      const option =
+        document.createElement("option");
+
+      option.value = item;
+
+      option.textContent = item;
+
+      area.appendChild(option);
+
+    });
+
+  }
+
+
+  /* =====================================================
+     حفظ الموقع
+  ===================================================== */
+
+  function saveLocation() {
+
+    const governorate =
+      document.getElementById("locationGovernorate").value;
+
+    const area =
+      document.getElementById("locationArea").value;
+
+
+    if (!governorate || !area) {
+
+      showToast("اختر المحافظة والمنطقة أولاً.");
+
+      return;
 
     }
 
 
-    function openLocationModal() {
-
-      document
-        .getElementById("locationModal")
-        .classList
-        .add("show");
-
-    }
+    document
+      .getElementById("currentLocation")
+      .textContent =
+      governorate + " · " + area;
 
 
-    function closeModal(id) {
+    closeModal("locationModal");
 
-      document
-        .getElementById(id)
-        .classList
-        .remove("show");
+    showToast(
+      "تم اختيار " + governorate + " · " + area
+    );
 
-    }
-
-
-    function closeModalOutside(event, id) {
-
-      if (event.target.id === id) {
-
-        closeModal(id);
-
-      }
-
-    }
+  }
 
 
-    /* =========================
-       LOCATION
-    ========================== */
+  /* =====================================================
+     النوافذ
+  ===================================================== */
 
-    function selectLocation(location) {
+  function openReportModal() {
 
-      document
-        .getElementById("currentLocation")
-        .textContent = location;
+    document
+      .getElementById("reportModal")
+      .classList
+      .add("show");
 
-      closeModal("locationModal");
-
-      showToast(
-        "تم اختيار " + location
-      );
-
-    }
+  }
 
 
-    /* =========================
-       REPORT
-    ========================== */
+  function openLocationModal() {
 
-    function submitReport(event) {
+    document
+      .getElementById("locationModal")
+      .classList
+      .add("show");
 
-      event.preventDefault();
+  }
 
-      closeModal("reportModal");
 
-      showToast(
-        "تم تسجيل البلاغ تجريبياً. سنربطه بقاعدة البيانات لاحقاً."
-      );
+  function closeModal(id) {
 
-      event.target.reset();
+    document
+      .getElementById(id)
+      .classList
+      .remove("show");
+
+  }
+
+
+  function closeModalOutside(event,id) {
+
+    if (event.target.id === id) {
+
+      closeModal(id);
 
     }
 
-
-    /* =========================
-       CONFIRM REPORT
-    ========================== */
-
-    function confirmReport(button) {
-
-      button.textContent = "✓ تم التأكيد";
-
-      button.style.color = "var(--primary)";
-
-      button.style.borderColor = "var(--primary)";
-
-      showToast(
-        "تم تسجيل تأكيدك بشكل تجريبي."
-      );
-
-    }
+  }
 
 
-    /* =========================
-       CATEGORY FILTER
-    ========================== */
+  /* =====================================================
+     إرسال البلاغ
+  ===================================================== */
 
-    function filterCategory(button, category) {
+  function submitReport(event) {
 
-      document
-        .querySelectorAll(".category")
-        .forEach(function(item) {
+    event.preventDefault();
 
-          item.classList.remove("active");
+    closeModal("reportModal");
 
-        });
+    showToast(
+      "تم تسجيل البلاغ تجريبياً. سنربطه بقاعدة البيانات لاحقاً."
+    );
 
-      button.classList.add("active");
+    event.target.reset();
+
+    document.getElementById("reportArea").disabled = true;
+
+  }
 
 
-      const alerts =
-        document.querySelectorAll(".alert-card");
+  /* =====================================================
+     تأكيد البلاغ
+  ===================================================== */
+
+  function confirmReport(button) {
+
+    button.textContent = "✓ تم التأكيد";
+
+    button.style.color = "var(--primary)";
+
+    button.style.borderColor = "var(--primary)";
+
+    showToast(
+      "تم تسجيل تأكيدك بشكل تجريبي."
+    );
+
+  }
 
 
-      alerts.forEach(function(alert) {
+  /* =====================================================
+     فلترة البلاغات
+  ===================================================== */
 
-        if (
-          category === "all" ||
-          alert.dataset.category === category
-        ) {
+  function filterCategory(button,category) {
 
-          alert.style.display = "block";
+    document
+      .querySelectorAll(".category")
+      .forEach(function(item) {
 
-        } else {
-
-          alert.style.display = "none";
-
-        }
+        item.classList.remove("active");
 
       });
 
-    }
+
+    button.classList.add("active");
 
 
-    /* =========================
-       SCROLL
-    ========================== */
-
-    function scrollToAlerts() {
-
-      document
-        .getElementById("alertsList")
-        .scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-
-    }
+    const alerts =
+      document.querySelectorAll(".alert-card");
 
 
-    /* =========================
-       TOAST
-    ========================== */
+    alerts.forEach(function(alert) {
 
-    let toastTimer;
+      if (
+        category === "all" ||
+        alert.dataset.category === category
+      ) {
 
-    function showToast(message) {
+        alert.style.display = "block";
 
-      const toast =
-        document.getElementById("toast");
+      } else {
 
-      toast.textContent = message;
+        alert.style.display = "none";
 
-      toast.classList.add("show");
+      }
 
-      clearTimeout(toastTimer);
+    });
 
-      toastTimer = setTimeout(function() {
+  }
+
+
+  /* =====================================================
+     التمرير
+  ===================================================== */
+
+  function scrollToAlerts() {
+
+    document
+      .getElementById("alertsList")
+      .scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+
+  }
+
+
+  /* =====================================================
+     Toast
+  ===================================================== */
+
+  let toastTimer;
+
+  function showToast(message) {
+
+    const toast =
+      document.getElementById("toast");
+
+    toast.textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer =
+      setTimeout(function() {
 
         toast.classList.remove("show");
 
-      }, 3000);
+      },3000);
 
-    }
+  }
 
 
-    /* =========================
-       ESCAPE KEY
-    ========================== */
+  /* =====================================================
+     ESC
+  ===================================================== */
 
-    document.addEventListener(
-      "keydown",
-      function(event) {
+  document.addEventListener(
+    "keydown",
+    function(event) {
 
-        if (event.key === "Escape") {
+      if (event.key === "Escape") {
 
-          closeModal("reportModal");
+        closeModal("reportModal");
 
-          closeModal("locationModal");
-
-        }
+        closeModal("locationModal");
 
       }
-    );
 
-  </script>
+    }
+  );
+
+
+  /* =====================================================
+     تشغيل النظام
+  ===================================================== */
+
+  populateGovernorates();
+
+</script>
 
 </body>
 </html>
