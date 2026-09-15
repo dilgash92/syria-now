@@ -10,9 +10,74 @@
 <body><div class="boot">جاري فتح سوريا الآن…</div>
 <script>
 fetch('app.html').then(r=>r.text()).then(html=>{
-const logo='<svg class="brand-logo-svg" viewBox="0 0 72 72" aria-label="سوريا الآن" role="img"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#063f2a"/><stop offset=".55" stop-color="#0b8f57"/><stop offset="1" stop-color="#35d58a"/></linearGradient></defs><path d="M36 3C18 3 5 16 5 33c0 22 21 29 31 36 10-7 31-14 31-36C67 16 54 3 36 3Z" fill="url(#lg)"/><path d="M22 28l5-8 8 1 8-5 8 6 3 8-7 4-3 8-9 5-7-5-7 1-3-7 4-8Z" fill="#fff" opacity=".96"/><path d="M28 22l7 2 8-4 6 5-2 6-7 1-5 6-7-2-4-5 4-9Z" fill="#0b6b43"/><circle cx="36" cy="34" r="18" fill="none" stroke="#b8ffd9" stroke-width="2" opacity=".55"/></svg>';
+const logo='<svg class="brand-logo-svg" viewBox="0 0 64 64" aria-label="سوريا الآن" role="img"><path d="M32 3C20 3 11 12 11 24c0 15 13 25 21 36 8-11 21-21 21-36C53 12 44 3 32 3Z" fill="#0b8f57"/><circle cx="32" cy="24" r="8" fill="#fff"/><path d="M32 19v10M27 24h10" stroke="#0b8f57" stroke-width="3" stroke-linecap="round"/></svg>';
 html=html.replace('<div class="logo">✚</div>',logo);
 html=html.replace('</head>','<style>.brand-logo-svg{width:42px;height:42px;display:block;filter:drop-shadow(0 3px 5px rgba(6,63,42,.2))}@media(max-width:600px){.brand-logo-svg{width:38px;height:38px}}</style></head>');
+const patch=`<style>
+.location-detected{border:1px solid #dce9e2;background:#f6fbf8;border-radius:14px;padding:14px;margin-bottom:14px}.location-detected strong{display:block;margin-bottom:5px}.location-status{font-size:12px;color:#68766f;line-height:1.6}.location-status.ok{color:#176b46}.location-status.err{color:#a23b3b}.location-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.location-actions .btn{flex:1;min-width:150px}.location-manual{border-top:1px solid #edf0ee;margin-top:14px;padding-top:14px}.radius-options{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}.radius-options button{border:1px solid #dfe6e2;background:#fff;border-radius:9px;padding:7px 10px;font-size:12px}.radius-options button.active{background:#e9f7f0;border-color:#1f8f5f;color:#176b46;font-weight:700}
+</style>
+<script>
+(function(){
+let detectedLocationId=null,detectedLocationLabel='',detectedLat=null,detectedLon=null,detectedAccuracy=null,locationBusy=false;
+const coarseRound=(v,step=0.05)=>Math.round(v/step)*step;
+function injectLocationUI(){
+ const lm=document.getElementById('locationModal'); const rm=document.getElementById('reportModal');
+ if(lm){
+  const modal=lm.querySelector('.modal');
+  modal.innerHTML='<div class="modalhead"><h2>تحديد موقعك</h2><button class="x" onclick="closeModal(\'locationModal\')">×</button></div><div class="location-detected"><strong id="locationDetectedTitle">📍 لم يتم تحديد موقعك بعد</strong><div id="locationDetectedStatus" class="location-status">نستخدم موقع جهازك بشكل مؤقت لمعرفة المدينة أو البلدة الأقرب فقط. لا يتم حفظ الإحداثيات الدقيقة.</div><div class="location-actions"><button id="detectLocationBtn" class="btn primary" onclick="detectMyLocation(\'profile\')">📍 تحديد موقعي تلقائياً</button><button class="btn" onclick="useManualLocation()">إدخال المنطقة يدوياً</button></div></div><div id="locationManualBox" class="location-manual hidden"><div class="field"><label>المدينة / البلدة / المنطقة</label><input id="manualLocationSimple" placeholder="مثال: القامشلي، عامودا، الحسكة"></div><button class="btn primary" style="width:100%" onclick="saveManualSimpleLocation(\'profile\')">حفظ الموقع</button></div>';
+ }
+ if(rm){
+  const form=rm.querySelector('form'); const old=form.querySelector('.grid2');
+  const old2=form.querySelectorAll('.grid2'); old2.forEach(x=>x.remove());
+  const title=document.getElementById('reportTitle');
+  const node=document.createElement('div');node.innerHTML='<div class="location-detected"><strong id="reportLocationTitle">📍 موقع البلاغ: غير محدد</strong><div id="reportLocationStatus" class="location-status">سيتم تحديد المكان تلقائياً من موقعك التقريبي.</div><div class="location-actions"><button type="button" class="btn primary" onclick="detectMyLocation(\'report\')">📍 تحديد موقعي</button><button type="button" class="btn" onclick="toggleReportManual()">اختيار يدوياً</button></div></div><div id="reportManualBox" class="location-manual hidden"><div class="field"><label>المدينة / البلدة / المنطقة</label><input id="reportManualLocation" placeholder="مثال: القامشلي، عامودا، الحسكة"></div><button type="button" class="btn" onclick="resolveManualReportLocation()">استخدام هذا المكان</button></div>';
+  form.insertBefore(node,title.parentElement);
+  const desc=form.querySelector('#reportDescription'); if(desc){const r=document.createElement('div');r.innerHTML='<div class="field"><label>نطاق الإشعار لاحقاً</label><div class="radius-options"><button type="button" class="active" data-radius="auto" onclick="setReportRadius(this,\'auto\')">تلقائي حسب الخطورة</button><button type="button" data-radius="5" onclick="setReportRadius(this,5)">5 كم</button><button type="button" data-radius="10" onclick="setReportRadius(this,10)">10 كم</button><button type="button" data-radius="20" onclick="setReportRadius(this,20)">20 كم</button></div><div class="small">سيُستخدم هذا لاحقاً لإرسال التنبيه للأشخاص القريبين من مكان البلاغ.</div></div>';desc.parentElement.insertAdjacentElement('afterend',r)}
+ }
+}
+async function findLocationId(names){
+ const clean=[...new Set(names.filter(Boolean).map(x=>String(x).trim()).filter(x=>x.length>1))];
+ for(const name of clean){
+  let q=await db.from('locations').select('id,name_ar,name_en,level,parent_id').or('name_ar.eq.'+name+',name_en.ilike.'+name).limit(5);
+  if(q.data?.length)return q.data[0].id;
+  q=await db.from('locations').select('id,name_ar,name_en,level,parent_id').ilike('name_ar','%'+name+'%').limit(5);
+  if(q.data?.length)return q.data[0].id;
+ }
+ return null;
+}
+function setStatus(target,title,text,kind){const t=document.getElementById(target+'Title'),s=document.getElementById(target+'Status');if(t)t.textContent=title;if(s){s.textContent=text;s.className='location-status '+(kind||'')}}
+async function reverseCoarse(lat,lon){
+ const clat=coarseRound(lat),clon=coarseRound(lon);
+ const url='https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat='+encodeURIComponent(clat)+'&lon='+encodeURIComponent(clon)+'&zoom=10&accept-language=ar';
+ const r=await fetch(url,{headers:{'Accept':'application/json'}});if(!r.ok)throw new Error('تعذر تحديد المنطقة');const d=await r.json();const a=d.address||{};
+ const names=[a.city,a.town,a.village,a.municipality,a.city_district,a.county,a.state_district,a.state];
+ const id=await findLocationId(names);
+ return {id,label:names.find(Boolean)||d.display_name?.split(',')[0]||'منطقتك',names};
+}
+window.detectMyLocation=async function(mode){
+ if(locationBusy)return;locationBusy=true;const btn=document.getElementById(mode==='report'?'reportLocationStatus':'locationDetectedStatus');if(btn)btn.textContent='جاري تحديد موقعك التقريبي…';
+ if(!navigator.geolocation){locationBusy=false;setStatus(mode==='report'?'reportLocation':'locationDetected','⚠️ تحديد الموقع غير متاح','أدخل المدينة أو البلدة يدوياً.','err');return}
+ navigator.geolocation.getCurrentPosition(async p=>{try{
+  const lat=p.coords.latitude,lon=p.coords.longitude;detectedLat=coarseRound(lat);detectedLon=coarseRound(lon);detectedAccuracy=p.coords.accuracy||null;
+  const res=await reverseCoarse(lat,lon);detectedLocationId=res.id;detectedLocationLabel=res.label||'منطقتك';
+  if(!detectedLocationId)throw new Error('لم أجد هذا المكان ضمن قاعدة المناطق');
+  setStatus(mode==='report'?'reportLocation':'locationDetected','📍 '+detectedLocationLabel,'تم تحديد منطقة تقريبية. لم يتم حفظ الإحداثيات الدقيقة.', 'ok');
+  if(mode==='report'){window.__reportLocationId=detectedLocationId;window.__reportRadius=window.__reportRadius||'auto';}
+  else if(session){const rr=await db.from('profiles').update({home_location_id:detectedLocationId}).eq('id',session.user.id);if(rr.error)throw rr.error;document.getElementById('locationBtn').textContent='📍 '+detectedLocationLabel;}
+ }catch(e){detectedLocationId=null;setStatus(mode==='report'?'reportLocation':'locationDetected','⚠️ لم أستطع تحديد المنطقة','يمكنك إدخال المدينة أو البلدة يدوياً.','err')}finally{locationBusy=false}},()=>{locationBusy=false;setStatus(mode==='report'?'reportLocation':'locationDetected','⚠️ لم يتم السماح بالموقع','اسمح للموقع أو أدخل منطقتك يدوياً.','err')},{enableHighAccuracy:false,maximumAge:300000,timeout:10000});
+}
+window.useManualLocation=function(){document.getElementById('locationManualBox')?.classList.remove('hidden')};
+window.saveManualSimpleLocation=async function(mode){const v=document.getElementById('manualLocationSimple')?.value.trim();if(!v){toast('اكتب اسم المدينة أو البلدة.');return}const id=await findLocationId([v]);if(!id){toast('لم أجد المكان. جرّب اسماً أوضح.');return}detectedLocationId=id;detectedLocationLabel=v;if(session){const r=await db.from('profiles').update({home_location_id:id}).eq('id',session.user.id);if(r.error){toast(r.error.message);return}}localStorage.setItem('syria_now_location_id',id);document.getElementById('locationBtn').textContent='📍 '+v;closeModal('locationModal');toast('تم حفظ منطقتك التقريبية.');};
+window.toggleReportManual=function(){document.getElementById('reportManualBox')?.classList.toggle('hidden')};
+window.resolveManualReportLocation=async function(){const v=document.getElementById('reportManualLocation')?.value.trim();if(!v){toast('اكتب اسم المكان.');return}const id=await findLocationId([v]);if(!id){toast('لم أجد المكان. جرّب اسماً أوضح.');return}window.__reportLocationId=id;detectedLocationId=id;detectedLocationLabel=v;setStatus('reportLocation','📍 موقع البلاغ: '+v,'تم اختيار منطقة تقريبية يدوياً.','ok');document.getElementById('reportManualBox')?.classList.add('hidden')};
+window.setReportRadius=function(el,v){window.__reportRadius=v;document.querySelectorAll('.radius-options button').forEach(x=>x.classList.remove('active'));el.classList.add('active')};
+const oldOpenLocation=window.openLocation;window.openLocation=function(){document.getElementById('locationModal').classList.add('show');injectLocationUI();if(session){detectMyLocation('profile')}};
+const oldOpenReport=window.openReport;window.openReport=function(){if(!session){openAuth();toast('إنشاء البلاغ يحتاج حساباً.');return}document.getElementById('reportModal').classList.add('show');injectLocationUI();window.__reportLocationId=null;detectMyLocation('report')};
+const oldSubmitReport=window.submitReport;window.submitReport=async function(e){e.preventDefault();if(!window.__reportLocationId){toast('حدد موقع البلاغ أولاً.');return}const r=await db.from('reports').insert({created_by:session.user.id,category:document.getElementById('reportCategory').value,title:document.getElementById('reportTitle').value.trim(),description:document.getElementById('reportDescription').value.trim()||null,location_id:window.__reportLocationId,happened_at:new Date().toISOString(),status:'active',confidence:'new'});if(r.error){toast(r.error.message);return}e.target.reset();closeModal('reportModal');toast('تم إرسال البلاغ للمجتمع.');loadReports()};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',injectLocationUI);else injectLocationUI();
+})();
+</script>`;
+html=html.replace('</body>',patch+'</body>');
 document.open();document.write(html);document.close();
 }).catch(()=>{document.querySelector('.boot').textContent='تعذر تحميل الموقع. أعد المحاولة.'});
 </script></body></html>
